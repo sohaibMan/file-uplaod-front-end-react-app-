@@ -9,7 +9,11 @@ function UlpoadButtons(props) {
   const uploadRef = React.useRef();
   const uploadHanlder = (e) => {
     const files = Array.from(e.target.files).map((file) => {
-      return { img: URL.createObjectURL(file), name: file.name, imgData: file };
+      return {
+        img: URL.createObjectURL(file),
+        name: file.name,
+        imgData: file,
+      };
     });
     props.onUpload(files);
 

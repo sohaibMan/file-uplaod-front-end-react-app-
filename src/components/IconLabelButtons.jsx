@@ -24,13 +24,30 @@ export default function IconLabelButtons(props) {
       //   "🚀 ~ file: IconLabelButtons.jsx:18 ~ sendHanlder ~ imgs",
       //   imgs
       // );
+      // !post request
+      // const formData = new FormData();
+      // props.imgs.forEach((file) => formData.append(file.name, file.imgData));
+      // const res = await fetch(
+      //   "http://localhost:8080/api/v1/uploads?categorie=images",
+      //   {
+      //     method: "POST",
+      //     body: formData,
+      //   }
+      // );
+      // !put request
       const formData = new FormData();
+
       props.imgs.forEach((file) => formData.append(file.name, file.imgData));
+      // console.log(formData);
       const res = await fetch(
-        "http://localhost:8080/api/v1/uploads?categorie=images", //images or video or audio
+        "http://localhost:8080/api/v1/uploads?categorie=images",
         {
-          method: "POST",
+          method: "PUT",
           body: formData,
+          headers: {
+            "file-url":
+              "https://findit.blob.core.windows.net/images/testimages099c7a00-9cef-11ed-86eb-35cb833df65e1png2ba3ba50-9cfe-11ed-9d85-a57fa5c7bf6dpngfee748f0-9cfe-11ed-bdef-4905d67e8e58png1060a250-9d01-11ed-a132-89f192a384f6png95878c50-9d01-11ed-a132-89f192a384f6.png28de7800-9d7b-11ed-a767-d1e9c4efb080.png",
+          },
         }
       );
       const data = await res.json();
